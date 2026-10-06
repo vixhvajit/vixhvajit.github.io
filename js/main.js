@@ -15,7 +15,7 @@ const POSES = {
   comp1:    { x: 0.74,  y: 0.6,   z: 0, scale: 0.6,  rx: 0.28, ry: 1.6,  rz: -0.18, prop: 1.6, m: { x: -0.3, y: -1.0, scale: 0.45 } },
   feat0:    { x: 0.86,  y: 0.74,  z: 0, scale: 0.42, rx: 0.3,  ry: 2.2,  rz: 0.1,   prop: 1.2, m: { x: 0.6, y: 0.8, scale: 0.4 } },
   feat1:    { x: 0.86,  y: -0.7,  z: 0, scale: 0.42, rx: 0.3,  ry: 3.4,  rz: -0.1,  prop: 1.2, m: { x: 0.6, y: 0.8, scale: 0.4 } },
-  builds:   { x: -0.82, y: 0.7,   z: 0, scale: 0.45, rx: 0.3,  ry: 4.2,  rz: -0.12, prop: 1.3, m: { x: 0.6, y: 0.8, scale: 0.4 } },
+  projects: { x: 0.8,   y: 0.72,  z: 0, scale: 0.45, rx: 0.3,  ry: 4.2,  rz: -0.12, prop: 1.3, m: { x: 0.6, y: 0.8, scale: 0.4 } },
   skills:   { x: 0.62,  y: 0.6,   z: 0, scale: 0.7,  rx: 0.5,  ry: 5.0,  rz: 0.1,   prop: 1.6, m: { x: 0.5, y: 0.78, scale: 0.5 } },
   about:    { x: 0.74,  y: 0.6,   z: 0, scale: 0.6,  rx: 0.3,  ry: 5.8,  rz: 0.2,   prop: 1.2, m: { x: 0.55, y: 0.8, scale: 0.45 } },
   contact0: { x: 0,     y: -0.74, z: 0, scale: 0.95, rx: 0.42, ry: 6.6,  rz: 0,     prop: 1.3, m: { y: -0.7, scale: 1 } },
@@ -88,6 +88,7 @@ function init() {
 
   startDrone(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches);
   wireAnchors();
+  wireFilters();
   refreshWhenLayoutSettles();
 }
 
@@ -194,16 +195,19 @@ function buildChoreography() {
     });
   });
 
-  // More builds: staggered rise.
-  segment('feat1', 'builds', ScrollTrigger.create({ trigger: '.builds', start: 'top bottom', end: 'top 30%' }));
-  revealHead('.builds .section-head');
-  gsap.from('.build', {
-    y: 90, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.12,
-    scrollTrigger: { trigger: '.builds__grid', start: 'top 80%', once: true },
+  // All projects: cards rise in batches as they scroll into view.
+  segment('feat1', 'projects', ScrollTrigger.create({ trigger: '.projects', start: 'top bottom', end: 'top 30%' }));
+  revealHead('.projects .section-head');
+  gsap.from('.filters', { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: '.filters', start: 'top 88%', once: true } });
+  gsap.set('.pcard', { y: 70, opacity: 0 });
+  ScrollTrigger.batch('.pcard', {
+    start: 'top 90%',
+    once: true,
+    onEnter: (cards) => gsap.to(cards, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.1, overwrite: true }),
   });
 
   // Skills: endless sideways rows that speed up with scroll velocity.
-  segment('builds', 'skills', ScrollTrigger.create({ trigger: '.skills', start: 'top bottom', end: 'center center' }));
+  segment('projects', 'skills', ScrollTrigger.create({ trigger: '.skills', start: 'top bottom', end: 'center center' }));
   revealHead('.skills .section-head');
   buildMarquees();
 
@@ -288,6 +292,25 @@ function splitWords(el) {
     if (i < words.length - 1) el.append(' ');
   });
   el.dataset.split = '1';
+}
+
+function wireFilters() {
+  const buttons = [...document.querySelectorAll('.filter')];
+  const cards = [...document.querySelectorAll('.pcard')];
+  const matches = (card, filter) => filter === 'all' || card.dataset.status === filter;
+  buttons.forEach((button) => {
+    button.querySelector('.filter__n').textContent = cards.filter((c) => matches(c, button.dataset.filter)).length;
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+      cards.forEach((card) => { card.hidden = !matches(card, filter); });
+      if (root.classList.contains('motion')) {
+        gsap.fromTo(cards.filter((c) => !c.hidden), { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', stagger: 0.06, overwrite: true });
+      }
+      // Later sections move when the grid changes height.
+      ScrollTrigger.refresh();
+    });
+  });
 }
 
 function wireAnchors() {

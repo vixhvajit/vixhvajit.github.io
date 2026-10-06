@@ -23,13 +23,16 @@ Drop a JPG with the matching name into `assets/projects/`. It appears in its car
 
 | File | Card |
 |---|---|
-| `iroc-docking.jpg` | Autonomous docking and GPS-denied flight |
-| `ster-vis.jpg` | Ster-Vis |
-| `amr.jpg` | Stereo-Vision AMR |
+| `iroc-docking.jpg` | Autonomous docking and GPS-denied drone (featured panel and project card) |
+| `ster-vis.jpg` | Ster-Vis (featured panel and project card) |
+| `amr.jpg` | Stereo-Vision AMR (featured panel and project card) |
 | `fixed-wing.jpg` | Fixed-wing aircraft |
 | `hybrid-vtol.jpg` | Hybrid VTOL |
-| `rover.jpg` | PVC rocker-bogie rover |
-| `adsb.jpg` | ADS-B receiver on ESP32 |
+| `quanta-link.jpg` | Quanta-Link |
+| `fhss.jpg` | Anti-jam FHSS link on an FPGA |
+| `coax.jpg` | Coaxial monocopter |
+| `nidar-2027.jpg` | NIDAR 2027 indoor SLAM drone |
+| `sih.jpg` | SIH 2026 search-and-rescue drone |
 
 Aim for landscape images about 1600 px wide and under 300 kB each.
 
@@ -42,6 +45,10 @@ python -m http.server 8080
 ```
 
 Then open http://localhost:8080.
+
+## Projects section
+
+Each card in the Projects section has `data-status="done"` (Completed tab) or `data-status="current"` (Current tab). The status badge text is free-form, such as "Released v2.1.0" or "In design". The tab counts update automatically, so moving a project from current to completed is a two-attribute edit: `data-status` and the badge class (`status--done` or `status--current`).
 
 ## Accessibility and fallbacks
 

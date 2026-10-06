@@ -44,6 +44,7 @@
     <nav aria-label="Sections">
       <ul class="nav__links">
         <li><a href="#competitions">Competitions</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">About</a></li>
@@ -150,7 +151,7 @@
     </section>
 
     <!-- Featured projects: zoom panels -->
-    <section class="features" id="projects">
+    <section class="features" id="work">
       <div class="section-head">
         <p class="eyebrow">02 / Selected work</p>
         <h2 class="h2">Machines that find their own way.</h2>
@@ -218,40 +219,112 @@
       </article>
     </section>
 
-    <!-- More builds -->
-    <section class="builds">
+    <!-- All projects, filterable by status -->
+    <section class="projects" id="projects">
       <div class="section-head">
-        <p class="eyebrow">03 / More builds</p>
-        <h2 class="h2">Air, ground and RF.</h2>
+        <p class="eyebrow">03 / Projects</p>
+        <h2 class="h2">Built, and on the bench.</h2>
       </div>
-      <ul class="builds__grid">
-        <li class="build">
+      <div class="filters" role="group" aria-label="Filter projects by status">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All <span class="filter__n">10</span></button>
+        <button class="filter" type="button" data-filter="done" aria-pressed="false">Completed <span class="filter__n">4</span></button>
+        <button class="filter" type="button" data-filter="current" aria-pressed="false">Current <span class="filter__n">6</span></button>
+      </div>
+      <ul class="projects__grid">
+
+        <li class="pcard" data-status="done">
+          <figure class="media"><img src="assets/projects/iroc-docking.jpg" alt="Drone docked on its charging station" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--done">Completed</span><span class="pcard__kicker">Drone · ISRO IROC-U 2026</span></div>
+          <h3 class="pcard__title">Autonomous docking and GPS-denied drone</h3>
+          <p>A docking mechanism that lets a drone dock and recharge on its own from any landing orientation, and a GPS-denied drone that runs its mission, lands, recharges and resumes. Built as team captain.</p>
+          <ul class="tags"><li>Autonomy</li><li>Docking</li><li>GPS-denied navigation</li></ul>
+        </li>
+
+        <li class="pcard" data-status="done">
+          <figure class="media"><img src="assets/projects/ster-vis.jpg" alt="Ster-Vis stereo camera rig" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--done">Released v2.1.0</span><span class="pcard__kicker">Vision · Open source</span></div>
+          <h3 class="pcard__title">Ster-Vis stereo depth camera</h3>
+          <p>Two low-cost cameras and a Raspberry Pi 5 that give a robot depth, point clouds, laser scans and obstacle sectors over ROS 2 or HTTP. 1.6% median depth error against ray-traced ground truth.</p>
+          <ul class="tags"><li>Python</li><li>OpenCV</li><li>ROS 2</li><li>Raspberry Pi 5</li></ul>
+          <a class="link" href="https://github.com/vixhvajit/Ster-Vis" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+        </li>
+
+        <li class="pcard" data-status="done">
           <figure class="media"><img src="assets/projects/fixed-wing.jpg" alt="Fixed-wing aircraft" decoding="async" onerror="this.closest('figure').remove()"></figure>
-          <p class="build__kicker">Aircraft · Independent</p>
-          <h3 class="build__title">Fixed-wing aircraft</h3>
+          <div class="pcard__top"><span class="status status--done">Completed</span><span class="pcard__kicker">Aircraft · Independent</span></div>
+          <h3 class="pcard__title">Fixed-wing aircraft</h3>
           <p>Designed the airfoil and airframe in XFLR5 and Fusion 360, validated the aerodynamics in Ansys CFD, then fabricated and flight-tested it.</p>
           <ul class="tags"><li>XFLR5</li><li>Fusion 360</li><li>Ansys CFD</li></ul>
         </li>
-        <li class="build">
+
+        <li class="pcard" data-status="done">
           <figure class="media"><img src="assets/projects/hybrid-vtol.jpg" alt="Hybrid VTOL aircraft" decoding="async" onerror="this.closest('figure').remove()"></figure>
-          <p class="build__kicker">Aircraft · Independent</p>
-          <h3 class="build__title">Hybrid VTOL</h3>
+          <div class="pcard__top"><span class="status status--done">Completed</span><span class="pcard__kicker">Aircraft · Independent</span></div>
+          <h3 class="pcard__title">Hybrid VTOL</h3>
           <p>Assembled and tuned a hybrid VTOL platform to a stable transition between vertical take-off and landing and fixed-wing forward flight.</p>
           <ul class="tags"><li>VTOL</li><li>Propulsion tuning</li><li>Transition flight</li></ul>
         </li>
-        <li class="build">
-          <figure class="media"><img src="assets/projects/rover.jpg" alt="PVC rocker-bogie rover" decoding="async" onerror="this.closest('figure').remove()"></figure>
-          <p class="build__kicker">Ground robot · In progress</p>
-          <h3 class="build__title">PVC rocker-bogie rover</h3>
-          <p>A 1 m six-wheel rover with a parametric rocker-bogie suspension in Fusion 360, sized for a 10 kg payload at a BOM under INR 50,000. A ROS 2 <code>skid_drive</code> node on a Pi 5 turns <code>/cmd_vel</code> into motor commands.</p>
-          <ul class="tags"><li>Fusion 360</li><li>ROS 2 Jazzy</li><li>Raspberry Pi 5</li></ul>
+
+        <li class="pcard" data-status="current">
+          <figure class="media"><img src="assets/projects/quanta-link.jpg" alt="Quanta-Link air and ground nodes" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--current">In design</span><span class="pcard__kicker">Secure comms · Defence</span></div>
+          <h3 class="pcard__title">Quanta-Link: quantum-safe drone link</h3>
+          <p>Plain MAVLink lets anyone in radio range read a drone's telemetry and send it commands. Quanta-Link sits between the flight controller and the radio at each end and encrypts and authenticates every MAVLink frame. ArduPilot, PX4 and the ground station need no changes.</p>
+          <ul class="pcard__points">
+            <li>Hybrid X25519 + ML-KEM-768 (NIST FIPS 203) handshake, so recorded traffic stays secret even against a future quantum computer. Fresh keys every session give forward secrecy.</li>
+            <li>ChaCha20-Poly1305 on each packet, about 21 bytes of overhead, replay window, and no plaintext fallback. The air node runs on an ESP32-S3.</li>
+            <li>Runs over OpenHD or a separate 433 MHz SiK control link. Roadmap: spec, SITL simulation, side-by-side attack demo, then hardware.</li>
+          </ul>
+          <ul class="tags"><li>C11</li><li>ML-KEM</li><li>MAVLink</li><li>ESP32-S3</li><li>ArduPilot SITL</li></ul>
         </li>
-        <li class="build">
-          <figure class="media"><img src="assets/projects/adsb.jpg" alt="ESP32 ADS-B receiver web UI" decoding="async" onerror="this.closest('figure').remove()"></figure>
-          <p class="build__kicker">Embedded · RF</p>
-          <h3 class="build__title">ADS-B receiver on ESP32</h3>
-          <p>A FreeRTOS Mode S / ADS-B decoder with CRC-24, CPR position decoding and a live aircraft table, served over a dump1090-compatible JSON API and web UI. 40,406 decoder assertions run in CI.</p>
-          <ul class="tags"><li>C</li><li>FreeRTOS</li><li>ESP32</li></ul>
+
+        <li class="pcard" data-status="current">
+          <figure class="media"><img src="assets/projects/fhss.jpg" alt="FPGA software-defined radio for the anti-jam link" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--current">In design</span><span class="pcard__kicker">RF · FPGA</span></div>
+          <h3 class="pcard__title">Anti-jam FHSS link on an FPGA</h3>
+          <p>Encryption protects what is sent; a jammer can still stop it from arriving. This link protects the transmission itself with frequency hopping that is both secret and adaptive.</p>
+          <ul class="pcard__points">
+            <li>Keyed hop sequence derived from the Quanta-Link session key, so a jammer cannot predict the next channel.</li>
+            <li>The radio senses the spectrum, classifies the jammer (barrage, spot, sweep, pulsed or follower) and responds by blacklisting channels, hopping faster or switching band.</li>
+            <li>Two levels: ESP32 with an SX1262/SX1280 radio first, then an FPGA SDR (ADALM-PLUTO, AD9363 + Zynq) for wideband sensing and dwell times shorter than a follower jammer can react.</li>
+          </ul>
+          <ul class="tags"><li>FPGA</li><li>SDR</li><li>ADALM-PLUTO</li><li>ESP32</li><li>GNU Radio</li></ul>
+        </li>
+
+        <li class="pcard" data-status="current">
+          <figure class="media"><img src="assets/projects/coax.jpg" alt="Coaxial thrust-vectored monocopter" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--current">In progress</span><span class="pcard__kicker">Drone · Thrust vectoring</span></div>
+          <h3 class="pcard__title">Coaxial monocopter</h3>
+          <p>A single coaxial rotor pair, with counter-rotating props cancelling yaw, steered by a two-axis servo gimbal that tilts the whole thrust line up to ±12°. Flown by ArduPilot as a CoaxCopter.</p>
+          <ul class="pcard__points">
+            <li>Compact 10-inch proof of concept designed in Fusion 360 through four iterations, all from parametric generator scripts.</li>
+            <li>The layout puts the centre of gravity 8–12 cm below the gimbal pivot for passive stability. An 18-inch long-endurance version follows.</li>
+          </ul>
+          <ul class="tags"><li>ArduPilot</li><li>Fusion 360</li><li>Thrust vectoring</li><li>3D printing</li></ul>
+        </li>
+
+        <li class="pcard" data-status="current">
+          <figure class="media"><img src="assets/projects/amr.jpg" alt="Stereo-vision AMR on the floor" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--current">In progress</span><span class="pcard__kicker">Ground robot · B.E. project</span></div>
+          <h3 class="pcard__title">Stereo-Vision AMR</h3>
+          <p>A 4WD robot that avoids obstacles on stereo depth alone, running Ster-Vis on a Pi 5. It drives itself on real hardware. Next is a rigid camera mount and recalibration.</p>
+          <ul class="tags"><li>Raspberry Pi 5</li><li>Python</li><li>Fusion 360</li><li>Gazebo</li></ul>
+        </li>
+
+        <li class="pcard" data-status="current">
+          <figure class="media"><img src="assets/projects/nidar-2027.jpg" alt="NIDAR 2027 indoor drone" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--current">In progress</span><span class="pcard__kicker">Drone · NIDAR 2027</span></div>
+          <h3 class="pcard__title">Indoor SLAM drone for disaster response</h3>
+          <p>Captaining the NIDAR 2027 entry: an indoor, SLAM-enabled drone on ROS 2 and ArduPilot for disaster response.</p>
+          <ul class="tags"><li>ROS 2</li><li>ArduPilot</li><li>SLAM</li></ul>
+        </li>
+
+        <li class="pcard" data-status="current">
+          <figure class="media"><img src="assets/projects/sih.jpg" alt="Search-and-rescue drone concept" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <div class="pcard__top"><span class="status status--current">Submitted</span><span class="pcard__kicker">Drone · Smart India Hackathon 2026</span></div>
+          <h3 class="pcard__title">Autonomous search-and-rescue drone</h3>
+          <p>An AI-powered autonomous search-and-rescue drone for problem statement SIH26177 (Robotics and Drones). The idea, prototype video and write-up are submitted, awaiting screening.</p>
+          <ul class="tags"><li>Autonomy</li><li>Computer vision</li><li>Search and rescue</li></ul>
         </li>
       </ul>
     </section>
