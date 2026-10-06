@@ -8,7 +8,7 @@ const { gsap, ScrollTrigger, Lenis } = window;
 // Normalised screen coordinates: x and y run -1..1 from centre to edge (y up).
 // `m` overrides apply on narrow screens.
 const POSES = {
-  hero0:    { x: 0,     y: 0.42,  z: 0, scale: 1.25, rx: 0.45, ry: -0.6, rz: 0,     prop: 1,   m: { y: 0.5, scale: 1.15 } },
+  hero0:    { x: -0.32, y: 0.42,  z: 0, scale: 1.2,  rx: 0.45, ry: -0.6, rz: 0,     prop: 1,   m: { x: -0.5, y: 0.66, scale: 0.75 } },
   hero1:    { x: 0.95,  y: -2.3,  z: 0, scale: 3.4,  rx: 1.15, ry: 0.4,  rz: -0.25, prop: 2.4 },
   stats:    { x: 0.62,  y: 0.02,  z: 0, scale: 1.0,  rx: 0.32, ry: -0.8, rz: 0.28,  prop: 1.2, m: { x: 0.3, y: -0.62, scale: 0.8 } },
   comp0:    { x: 0.8,   y: 0.64,  z: 0, scale: 0.55, rx: 0.28, ry: -1.6, rz: 0.12,  prop: 1.4, m: { x: 0.3, y: -1.0, scale: 0.45 } },
@@ -123,6 +123,7 @@ function buildChoreography() {
   hero
     .to('.hero__name', { scale: 4.2, opacity: 0, ease: 'power2.in', duration: 0.6 }, 0)
     .to(['.hero__chip', '.hero__scroll'], { opacity: 0, y: -30, ease: 'none', duration: 0.25 }, 0)
+    .to('.hero__portrait', { yPercent: 8, scale: 1.06, opacity: 0, ease: 'power1.in', duration: 0.5 }, 0)
     .fromTo('.hero__line', { opacity: 0, y: 70, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, ease: 'power2.out', duration: 0.35 }, 0.5)
     .to({}, { duration: 0.15 });
 
