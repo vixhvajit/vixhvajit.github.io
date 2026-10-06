@@ -16,6 +16,7 @@ const POSES = {
   feat0:    { x: 0.86,  y: 0.74,  z: 0, scale: 0.42, rx: 0.3,  ry: 2.2,  rz: 0.1,   prop: 1.2, m: { x: 0.6, y: 0.8, scale: 0.4 } },
   feat1:    { x: 0.86,  y: -0.7,  z: 0, scale: 0.42, rx: 0.3,  ry: 3.4,  rz: -0.1,  prop: 1.2, m: { x: 0.6, y: 0.8, scale: 0.4 } },
   projects: { x: 0.8,   y: 0.72,  z: 0, scale: 0.45, rx: 0.3,  ry: 4.2,  rz: -0.12, prop: 1.3, m: { x: 0.6, y: 0.8, scale: 0.4 } },
+  pilot:    { x: 0.0,   y: 0.82,   z: 0, scale: 0.42, rx: 0.35, ry: 4.6,  rz: 0.1,   prop: 1.4, m: { x: 0.55, y: 0.84, scale: 0.38 } },
   skills:   { x: 0.62,  y: 0.6,   z: 0, scale: 0.7,  rx: 0.5,  ry: 5.0,  rz: 0.1,   prop: 1.6, m: { x: 0.5, y: 0.78, scale: 0.5 } },
   about:    { x: 0.74,  y: 0.6,   z: 0, scale: 0.6,  rx: 0.3,  ry: 5.8,  rz: 0.2,   prop: 1.2, m: { x: 0.55, y: 0.8, scale: 0.45 } },
   contact0: { x: 0,     y: -0.74, z: 0, scale: 0.95, rx: 0.42, ry: 6.6,  rz: 0,     prop: 1.3, m: { y: -0.7, scale: 1 } },
@@ -206,8 +207,29 @@ function buildChoreography() {
     onEnter: (cards) => gsap.to(cards, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.1, overwrite: true }),
   });
 
+  // Pilot: photo zooms out of its frame, then the field strip slides sideways.
+  segment('projects', 'pilot', ScrollTrigger.create({ trigger: '.pilot', start: 'top bottom', end: 'top 20%' }));
+  gsap.from('.pilot__text > *', {
+    x: -50, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08,
+    scrollTrigger: { trigger: '.pilot__grid', start: 'top 70%', once: true },
+  });
+  gsap.fromTo('.pilot__photo', { clipPath: 'inset(12% 12% 12% 12% round 24px)' }, {
+    clipPath: 'inset(0% 0% 0% 0% round 24px)', ease: 'none',
+    scrollTrigger: { trigger: '.pilot__photo', start: 'top bottom', end: 'center center', scrub: true },
+  });
+  gsap.fromTo('.pilot__photo img', { scale: 1.35 }, {
+    scale: 1, ease: 'none',
+    scrollTrigger: { trigger: '.pilot__photo', start: 'top bottom', end: 'bottom 30%', scrub: true },
+  });
+  const field = document.querySelector('.field__track');
+  gsap.fromTo(field, { x: () => window.innerWidth * 0.25 }, {
+    x: () => -Math.max(0, field.scrollWidth - document.documentElement.clientWidth),
+    ease: 'none',
+    scrollTrigger: { trigger: '.field', start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true },
+  });
+
   // Skills: endless sideways rows that speed up with scroll velocity.
-  segment('projects', 'skills', ScrollTrigger.create({ trigger: '.skills', start: 'top bottom', end: 'center center' }));
+  segment('pilot', 'skills', ScrollTrigger.create({ trigger: '.skills', start: 'top bottom', end: 'center center' }));
   revealHead('.skills .section-head');
   buildMarquees();
 

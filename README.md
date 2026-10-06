@@ -35,6 +35,8 @@ Drop a JPG with the matching name into `assets/projects/`. It appears in its car
 
 Aim for landscape images about 1600 px wide and under 300 kB each.
 
+`assets/field/` holds the photos for the Pilot section strip and the IndiaSkills card. They were cropped from Instagram story screenshots (app UI, captions and stickers removed) and given a light, slightly cool grade so they match the page. They are low resolution (576 px wide, from the phone screenshots), so replacing them with the original photos will look sharper. Keep the file names, and update the `width`/`height` attributes in `index.html` if the aspect ratio changes.
+
 ## Preview locally
 
 ES modules do not load from `file://`, so serve the folder:
