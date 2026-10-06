@@ -12,7 +12,6 @@ Vault note: `Obsidian Vault/Projects/Portfolio Website.md`
 | `css/styles.css` | Colours, type and layout. Colours are tokens at the top of the file (`--accent` changes the highlight colour everywhere) |
 | `js/main.js` | Smooth scroll and scroll animations (GSAP ScrollTrigger, Lenis). `POSES` sets where the 3D drone sits in each section |
 | `js/drone.js` | The 3D quadcopter (three.js), built from primitives in code |
-| `resume.pdf` | Copy of `Projects/General/resume/resume.pdf`. Re-copy it whenever the resume changes |
 | `assets/projects/` | Project photos (see below) |
 
 Libraries load from pinned CDN versions: GSAP 3.13.0, Lenis 1.1.13, three.js 0.170.0.
