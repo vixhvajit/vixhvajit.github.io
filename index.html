@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vishvajit S</title>
+  <meta name="description" content="Vishvajit S builds autonomous drones and robots. National Champion in Unmanned Aerial Systems at IndiaSkills 2026, ISRO IROC-U team captain, two-time Aerothon national finalist.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vishvajit S | Drones, robotics, avionics">
+  <meta property="og:description" content="National Champion, Unmanned Aerial Systems, IndiaSkills 2026. Autonomous docking, GPS-denied flight, stereo vision and ROS 2 robots.">
+  <meta name="theme-color" content="#fafafa">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- "js" enables enhanced layout; "motion" enables scroll choreography. main.js removes both if GSAP fails to load. -->
+  <script>
+    document.documentElement.classList.add('js');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <canvas class="drone-canvas" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top" aria-label="Vishvajit S, back to top">VS</a>
+    <nav aria-label="Sections">
+      <ul class="nav__links">
+        <li><a href="#competitions">Competitions</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero__inner">
+        <p class="hero__badge"><span class="pulse" aria-hidden="true"></span>National Champion · Unmanned Aerial Systems · IndiaSkills 2026</p>
+        <h1 class="hero__name">Vishvajit S</h1>
+        <p class="hero__line">Electrical engineer building autonomous drones and robots, from airframe to autopilot.</p>
+      </div>
+      <p class="hero__scroll" aria-hidden="true">Scroll</p>
+    </section>
+
+    <!-- Highlights -->
+    <section class="stats" aria-label="Highlights">
+      <ul class="stats__grid">
+        <li class="stat">
+          <span class="stat__num" data-to="1" data-prefix="#">#1</span>
+          <span class="stat__label">National Champion, Unmanned Aerial Systems, IndiaSkills 2026</span>
+        </li>
+        <li class="stat">
+          <span class="stat__num" data-to="4" data-suffix="×">4×</span>
+          <span class="stat__label">Team captain: ISRO IROC-U, NIDAR 2026, NIDAR 2027, Boeing</span>
+        </li>
+        <li class="stat">
+          <span class="stat__num" data-to="2" data-suffix="×">2×</span>
+          <span class="stat__label">Aerothon national finalist, avionics lead and pilot</span>
+        </li>
+        <li class="stat">
+          <span class="stat__num" data-to="3" data-suffix="rd">3rd</span>
+          <span class="stat__label">ADDC 2025 nationally, with Best Design Report</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Competitions: horizontal track -->
+    <section class="comp" id="competitions">
+      <div class="section-head">
+        <p class="eyebrow">01 / Competitions and leadership</p>
+        <h2 class="h2">Flown. Judged. Ranked.</h2>
+      </div>
+      <div class="comp__viewport">
+        <ol class="comp__track">
+          <li class="card card--champion">
+            <span class="card__year">2026</span>
+            <h3 class="card__title">IndiaSkills 2026</h3>
+            <p class="card__role">Unmanned Aerial Systems · NSDC</p>
+            <p class="card__result">National Champion</p>
+            <p class="card__text">Competed independently through the state, regional and national rounds to take the national title. Category prize pool: INR 1.75 lakh.</p>
+          </li>
+          <li class="card">
+            <span class="card__year">2026</span>
+            <h3 class="card__title">ISRO IROC-U</h3>
+            <p class="card__role">Team Captain</p>
+            <p class="card__result">Autonomous docking and GPS-denied flight</p>
+            <p class="card__text">A zero-error docking mechanism that lets a drone dock and recharge from any landing orientation, and a GPS-denied drone that runs its mission, lands, recharges and resumes on its own.</p>
+          </li>
+          <li class="card">
+            <span class="card__year">2026</span>
+            <h3 class="card__title">NIDAR 2026</h3>
+            <p class="card__role">Team Captain</p>
+            <p class="card__result">National finalist · Top 10, Design Report</p>
+            <p class="card__text">Led the team to the national final, with a design report ranked in the top 10.</p>
+          </li>
+          <li class="card">
+            <span class="card__year">25·26</span>
+            <h3 class="card__title">Aerothon</h3>
+            <p class="card__role">Avionics Lead and Pilot</p>
+            <p class="card__result">National finalist, 2025 and 2026</p>
+            <p class="card__text">Ran the avionics and flew the aircraft in both editions. Piloted and completed the manual flight mission in 2025.</p>
+          </li>
+          <li class="card">
+            <span class="card__year">2025</span>
+            <h3 class="card__title">ADDC</h3>
+            <p class="card__role">Vice Captain</p>
+            <p class="card__result">3rd nationally · Best Design Report</p>
+            <p class="card__text">Placed third in the country and took the Best Design Report award.</p>
+          </li>
+          <li class="card">
+            <span class="card__year">2026</span>
+            <h3 class="card__title">Boeing Aeromodelling Challenge</h3>
+            <p class="card__role">Team Captain</p>
+            <p class="card__result">Regional finalist</p>
+            <p class="card__text">Captained the team through to the regional final.</p>
+          </li>
+          <li class="card card--now">
+            <span class="card__year">Now</span>
+            <h3 class="card__title">NIDAR 2027</h3>
+            <p class="card__role">Captain</p>
+            <p class="card__result">In development</p>
+            <p class="card__text">Leading development of an indoor, SLAM-enabled ROS 2 drone for disaster response.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="comp__progress" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- Featured projects: zoom panels -->
+    <section class="features" id="projects">
+      <div class="section-head">
+        <p class="eyebrow">02 / Selected work</p>
+        <h2 class="h2">Machines that find their own way.</h2>
+      </div>
+
+      <article class="feature">
+        <div class="feature__panel">
+          <div class="feature__text">
+            <p class="feature__index">01 · ISRO IROC-U 2026</p>
+            <h3 class="feature__title">Autonomous docking and GPS-denied flight</h3>
+            <p class="feature__lede">A drone that flies its mission without GPS, lands on its dock, recharges itself and goes back out.</p>
+            <ul class="feature__points">
+              <li>Zero-error docking mechanism: the drone docks and recharges autonomously from any landing orientation.</li>
+              <li>GPS-denied drone that executes a mission, lands, recharges and resumes operation on its own.</li>
+              <li>Developed and flight-tested at CDSR, CIT Chennai, as team captain.</li>
+            </ul>
+            <ul class="tags"><li>Autonomy</li><li>Docking mechanism</li><li>GPS-denied navigation</li><li>Auto-recharge</li></ul>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__metric"><span class="feature__big">360°</span><span class="feature__unit">docks from any landing heading</span></div>
+            <figure class="media"><img src="assets/projects/iroc-docking.jpg" alt="Drone docked on its charging station" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="feature__panel">
+          <div class="feature__text">
+            <p class="feature__index">02 · Open source</p>
+            <h3 class="feature__title">Ster-Vis: a stereo depth camera for robots</h3>
+            <p class="feature__lede">Two low-cost cameras and a Raspberry Pi 5 that give a robot ZED-style depth, point clouds, laser scans and obstacle sectors over ROS 2 or HTTP.</p>
+            <ul class="feature__points">
+              <li>1.6% median depth error and 93% pixel coverage against ray-traced synthetic ground truth.</li>
+              <li>In Gazebo: zero collisions in two 180 s obstacle-avoidance runs, and a 20 × 12 m warehouse mapped at 2.7 cm median error.</li>
+              <li>Released through v2.1.0 under Apache-2.0, with CI on Linux, Windows, ARM64 and ROS 2 Jazzy.</li>
+            </ul>
+            <ul class="tags"><li>Python</li><li>OpenCV</li><li>ROS 2</li><li>Raspberry Pi 5</li></ul>
+            <a class="link" href="https://github.com/vixhvajit/Ster-Vis" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__metric"><span class="feature__big">1.6%</span><span class="feature__unit">median depth error vs ray-traced ground truth</span></div>
+            <figure class="media"><img src="assets/projects/ster-vis.jpg" alt="Ster-Vis stereo camera rig" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature">
+        <div class="feature__panel">
+          <div class="feature__text">
+            <p class="feature__index">03 · Ground robot</p>
+            <h3 class="feature__title">Stereo-Vision AMR</h3>
+            <p class="feature__lede">A 4WD robot that avoids obstacles using nothing but stereo depth from two Pi cameras, running Ster-Vis.</p>
+            <ul class="feature__points">
+              <li>Chassis generated by a parametric Fusion 360 script, then 3D-printed, wired and brought up.</li>
+              <li>Reactive avoidance with an 8 s obstacle memory, a stale-depth watchdog that stops the motors, and a capped motor duty.</li>
+              <li>Drives itself on real hardware at about 6 fps depth on a Pi 5, with zero contacts in 180 s Gazebo runs.</li>
+            </ul>
+            <ul class="tags"><li>Raspberry Pi 5</li><li>Python</li><li>Fusion 360</li><li>3D printing</li><li>Gazebo</li></ul>
+          </div>
+          <div class="feature__visual">
+            <div class="feature__metric"><span class="feature__big">0</span><span class="feature__unit">contacts in 180 s Gazebo avoidance runs</span></div>
+            <figure class="media"><img src="assets/projects/amr.jpg" alt="Stereo-vision AMR on the floor" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- More builds -->
+    <section class="builds">
+      <div class="section-head">
+        <p class="eyebrow">03 / More builds</p>
+        <h2 class="h2">Air, ground and RF.</h2>
+      </div>
+      <ul class="builds__grid">
+        <li class="build">
+          <figure class="media"><img src="assets/projects/fixed-wing.jpg" alt="Fixed-wing aircraft" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <p class="build__kicker">Aircraft · Independent</p>
+          <h3 class="build__title">Fixed-wing aircraft</h3>
+          <p>Designed the airfoil and airframe in XFLR5 and Fusion 360, validated the aerodynamics in Ansys CFD, then fabricated and flight-tested it.</p>
+          <ul class="tags"><li>XFLR5</li><li>Fusion 360</li><li>Ansys CFD</li></ul>
+        </li>
+        <li class="build">
+          <figure class="media"><img src="assets/projects/hybrid-vtol.jpg" alt="Hybrid VTOL aircraft" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <p class="build__kicker">Aircraft · Independent</p>
+          <h3 class="build__title">Hybrid VTOL</h3>
+          <p>Assembled and tuned a hybrid VTOL platform to a stable transition between vertical take-off and landing and fixed-wing forward flight.</p>
+          <ul class="tags"><li>VTOL</li><li>Propulsion tuning</li><li>Transition flight</li></ul>
+        </li>
+        <li class="build">
+          <figure class="media"><img src="assets/projects/rover.jpg" alt="PVC rocker-bogie rover" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <p class="build__kicker">Ground robot · In progress</p>
+          <h3 class="build__title">PVC rocker-bogie rover</h3>
+          <p>A 1 m six-wheel rover with a parametric rocker-bogie suspension in Fusion 360, sized for a 10 kg payload at a BOM under INR 50,000. A ROS 2 <code>skid_drive</code> node on a Pi 5 turns <code>/cmd_vel</code> into motor commands.</p>
+          <ul class="tags"><li>Fusion 360</li><li>ROS 2 Jazzy</li><li>Raspberry Pi 5</li></ul>
+        </li>
+        <li class="build">
+          <figure class="media"><img src="assets/projects/adsb.jpg" alt="ESP32 ADS-B receiver web UI" decoding="async" onerror="this.closest('figure').remove()"></figure>
+          <p class="build__kicker">Embedded · RF</p>
+          <h3 class="build__title">ADS-B receiver on ESP32</h3>
+          <p>A FreeRTOS Mode S / ADS-B decoder with CRC-24, CPR position decoding and a live aircraft table, served over a dump1090-compatible JSON API and web UI. 40,406 decoder assertions run in CI.</p>
+          <ul class="tags"><li>C</li><li>FreeRTOS</li><li>ESP32</li></ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Skills marquee -->
+    <section class="skills" id="skills">
+      <div class="section-head">
+        <p class="eyebrow">04 / Toolkit</p>
+        <h2 class="h2">From airfoil to autopilot.</h2>
+      </div>
+      <div class="marquee">
+        <div class="marquee__track">
+          <ul class="marquee__group">
+            <li>ROS 2 Jazzy</li><li>ArduPilot</li><li>MAVROS</li><li>SLAM</li><li>Gazebo</li><li>GUIDED / offboard</li><li>colcon</li><li>QoS and executors</li>
+          </ul>
+        </div>
+      </div>
+      <div class="marquee marquee--outline">
+        <div class="marquee__track">
+          <ul class="marquee__group">
+            <li>Python</li><li>C</li><li>OpenCV</li><li>FreeRTOS</li><li>ESP32</li><li>Teensy</li><li>GPIO / PWM</li><li>MATLAB</li>
+          </ul>
+        </div>
+      </div>
+      <div class="marquee marquee--muted">
+        <div class="marquee__track">
+          <ul class="marquee__group">
+            <li>Fusion 360</li><li>XFLR5</li><li>Ansys CFD</li><li>3D printing</li><li>KiCad</li><li>Altium</li><li>EasyEDA</li><li>Buck / boost converters</li><li>Motor drives</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <p class="eyebrow">05 / About</p>
+      <p class="about__statement">I design the airframe, wire the avionics, write the autonomy and fly it myself. Most of it gets built at the Centre for Drones and Space Research in Chennai.</p>
+      <div class="about__cols">
+        <div class="about__item">
+          <p class="about__k">Experience</p>
+          <h3 class="about__title">Centre for Drones and Space Research (CDSR), CIT Chennai</h3>
+          <p class="about__meta">2024 to present</p>
+          <p>Centre of Excellence for UAV and space research. Developed and flight-tested the aircraft, drones and autonomous docking system shown here.</p>
+        </div>
+        <div class="about__item">
+          <p class="about__k">Education</p>
+          <h3 class="about__title">B.E. Electrical and Electronics Engineering</h3>
+          <p class="about__meta">Chennai Institute of Technology · 2024 to 2028</p>
+          <p>CGPA 8.56 / 10</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="contact__inner">
+        <p class="eyebrow">06 / Contact</p>
+        <h2 class="contact__title">Let's build something that flies.</h2>
+        <div class="contact__actions">
+          <a class="btn" href="mailto:bitvanisenthil@gmail.com">bitvanisenthil@gmail.com</a>
+          <a class="btn btn--ghost" href="https://github.com/vixhvajit" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn--ghost" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Vishvajit S</span>
+    <span>Chennai, India</span>
+  </footer>
+</body>
+</html>
