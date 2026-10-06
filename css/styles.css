@@ -242,18 +242,34 @@ html.lenis, html.lenis body { height: auto; }
   max-width: var(--max);
   margin: 0 auto;
 }
-.hero__badge {
+.hero__chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 0.95rem;
+  gap: 0.9rem;
+  padding: 0.45rem 1.2rem 0.45rem 0.45rem;
   border: 1px solid var(--rule);
   border-radius: 999px;
   background: var(--surface);
+  box-shadow: 0 14px 40px -24px rgba(11, 13, 16, 0.45);
+  text-align: left;
+}
+.hero__me {
+  width: 80px;
+  height: 80px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.hero__creds {
+  display: grid;
+  gap: 0.35rem;
   font-family: var(--font-mono);
-  font-size: clamp(0.66rem, 1.6vw, 0.8rem);
+  font-size: clamp(0.64rem, 1.5vw, 0.8rem);
   color: var(--muted);
 }
+.hero__creds li { display: flex; align-items: center; gap: 0.55rem; }
+.hero__creds li:last-child { color: var(--text); }
 .pulse {
   width: 8px;
   height: 8px;
@@ -263,6 +279,7 @@ html.lenis, html.lenis body { height: auto; }
   animation: pulse 2s infinite;
   flex: none;
 }
+.pulse--dark { background: var(--text); animation: none; }
 @keyframes pulse {
   70% { box-shadow: 0 0 0 10px rgba(43, 89, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(43, 89, 255, 0); }
@@ -420,8 +437,9 @@ html.lenis, html.lenis body { height: auto; }
 .card--champion .card__text { color: rgba(255, 255, 255, 0.78); }
 .card--champion .card__result { color: var(--accent-ink); font-size: 1.15rem; }
 
-/* Photo cards: the image is tinted into the card colour (duotone) */
-.card--photo { overflow: hidden; isolation: isolate; }
+/* Photo cards: the image is tinted into the card colour (duotone on the
+   coloured cards, greyscale on the white one) and fades out behind the text. */
+.card--photo { overflow: hidden; isolation: isolate; --card-bg: var(--surface); --card-fade: rgba(255, 255, 255, 0.15); }
 .card__bg {
   position: absolute;
   inset: 0;
@@ -439,8 +457,17 @@ html.lenis, html.lenis body { height: auto; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to top, var(--accent) 38%, rgba(43, 89, 255, 0.25) 100%);
+  background: linear-gradient(to top, var(--card-bg) 40%, var(--card-fade) 100%);
 }
+.card--champion { --card-bg: var(--accent); --card-fade: rgba(43, 89, 255, 0.25); }
+.card--light .card__bg { opacity: 0.6; }
+
+.card--rpc { background: var(--text); border-color: var(--text); color: var(--bg); --card-bg: var(--text); --card-fade: rgba(11, 13, 16, 0.05); }
+.card--rpc .card__bg { inset: 0 0 auto 0; height: 68%; object-position: 50% 58%; opacity: 0.95; filter: contrast(1.1) brightness(1.2); }
+.card--rpc .card__year { -webkit-text-stroke-color: var(--bg); }
+.card--rpc .card__role,
+.card--rpc .card__text { color: rgba(250, 250, 250, 0.72); }
+.card--rpc .card__result { color: #8fa8ff; }
 
 .card--now { background: var(--text); border-color: var(--text); color: var(--bg); }
 .card--now .card__year { -webkit-text-stroke-color: var(--bg); }
@@ -753,9 +780,9 @@ html.lenis, html.lenis body { height: auto; }
   margin-bottom: 0.25rem;
 }
 .pilot__creds dd { margin: 0; font-weight: 600; }
+.pilot__media { position: relative; justify-self: end; width: min(100%, 440px); }
 .pilot__photo {
-  justify-self: end;
-  width: min(100%, 440px);
+  width: 100%;
   aspect-ratio: 576 / 796;
   max-height: 80vh;
   margin: 0;
@@ -765,47 +792,37 @@ html.lenis, html.lenis body { height: auto; }
   box-shadow: 0 40px 80px -50px rgba(11, 13, 16, 0.5);
 }
 .pilot__photo img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
-
-.field {
-  margin-top: clamp(4rem, 10vh, 7rem);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.field::-webkit-scrollbar { display: none; }
-.field__track {
-  display: flex;
-  gap: 1rem;
-  width: max-content;
-  padding: 0 var(--gutter);
-}
-.shot {
-  position: relative;
-  flex: none;
-  height: clamp(220px, 38vh, 380px);
+.pilot__inset {
+  position: absolute;
+  left: -22%;
+  bottom: 9%;
+  width: 64%;
+  margin: 0;
+  border: 6px solid var(--bg);
   border-radius: 18px;
   overflow: hidden;
   background: var(--panel);
+  box-shadow: 0 30px 60px -30px rgba(11, 13, 16, 0.5);
 }
-.shot img { height: 100%; width: auto; }
-.shot__label {
+.pilot__inset img { width: 100%; height: auto; }
+.pilot__inset figcaption,
+.photo-label {
   position: absolute;
-  left: 12px;
-  bottom: 12px;
-  padding: 0.32rem 0.7rem;
+  left: 10px;
+  bottom: 10px;
+  padding: 0.28rem 0.65rem;
   border-radius: 999px;
-  background: rgba(250, 250, 250, 0.88);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgba(250, 250, 250, 0.9);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text);
 }
-.motion .field { overflow: hidden; }
-.motion .field__track { will-change: transform; }
 
 @media (max-width: 860px) {
   .pilot__grid { grid-template-columns: 1fr; }
-  .pilot__photo { justify-self: stretch; width: 100%; max-height: 64vh; aspect-ratio: 4 / 5; }
+  .pilot__media { justify-self: stretch; width: 100%; margin-bottom: 3rem; }
+  .pilot__photo { max-height: 64vh; aspect-ratio: 4 / 5; }
+  .pilot__inset { left: auto; right: 6%; bottom: -10%; width: 58%; }
 }
 
 /* --------------------------------------------------------------------------
@@ -879,6 +896,23 @@ html.lenis, html.lenis body { height: auto; }
   max-width: 24ch;
 }
 .about__statement .w { display: inline; }
+.about__lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+.about__photo {
+  margin: 0;
+  aspect-ratio: 576 / 470;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--panel);
+}
+.about__photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 860px) {
+  .about__lead { grid-template-columns: 1fr; }
+}
 .about__cols {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
@@ -949,6 +983,8 @@ html.lenis, html.lenis body { height: auto; }
   .stats__grid { grid-template-columns: 1fr 1fr; gap: 2rem 1rem; }
   .stat__label { font-size: 0.88rem; }
   .hero { padding-bottom: 18vh; }
+  .hero__chip { border-radius: 22px; padding-right: 0.9rem; gap: 0.7rem; }
+  .hero__me { width: 52px; height: 52px; }
   .filters { gap: 0.4rem; }
   .filter { padding: 0.5rem 0.8rem; font-size: 0.86rem; gap: 0.4rem; }
 }
